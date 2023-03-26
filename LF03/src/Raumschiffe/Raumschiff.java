@@ -80,7 +80,7 @@ public class Raumschiff {
 		String nachricht;
 		if (getEnergieversorgungInProzent() > 0) {
 			this.energieversorgungInProzent -= 50;
-			nachricht= "Photonentorpedo abgeschossen";
+			nachricht= "Phaserkanone abgeschossen";
 			nachrichtAnAlle(nachricht);
 			treffer(ziel);
 		}
