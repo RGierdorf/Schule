@@ -1,6 +1,13 @@
 package Raumschiffe;
 import java.util.ArrayList;
 
+/**
+ * Das Programm Raumschiff soll das verhalten von raumschiffen modelieren. 
+ * Es können Raumschiffe erstellt werden, diese können Beladen werden, Nachrichten austauschen 
+ * und sich beschiessen.
+ * @author raffael
+ *
+ */
 public class Raumschiff {
 	// Attribute
 	private int photonentorpedoAnzahl;
@@ -10,7 +17,7 @@ public class Raumschiff {
 	private int lebenserhaltungssystemeInProzent;
 	private int androidAnzahl;
 	private String schiffsname;
-	//private ArrayList<String> broadcastKommunikator;
+	private static ArrayList<String> broadcastKommunikator = new ArrayList<String>();
 	private ArrayList<Ladung> ladungsverzeichnis = new ArrayList<Ladung>();
 	
 	//Methoden
@@ -127,7 +134,9 @@ public class Raumschiff {
 	 */
 	public void nachrichtAnAlle(String nachricht) {
 		String name = getSchiffsname();
-		System.out.println("["+ name+ "]: " + nachricht);
+		String broadcast = "["+ name+ "]: " + nachricht;
+		System.out.println(broadcast);
+		broadcastKommunikator.add(broadcast);
 		
 	}
 	/**
@@ -145,6 +154,16 @@ public class Raumschiff {
 			System.out.println(this.ladungsverzeichnis.get(i));
 		}
 	}
+	/**
+	 * Die Methode logbuchEintraegeZurueckgeben gibt alle Nachrichten zurück, die mit der Methode
+	 * nachrichtAnAlle gesendet worden sind.
+	 */
+	public static void logbuchEintraegeZurueckgeben() {
+		for (int i = 0 ; i<broadcastKommunikator.size(); i++) {
+			System.out.println(broadcastKommunikator.get(i));
+			}
+	}
+		
 	
 	@Override
 	public String toString() {
